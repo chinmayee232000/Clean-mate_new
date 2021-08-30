@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cleanmate2">
-        <activity android:name=".donePage"></activity>
+        <activity android:name=".donePage" />
         <activity android:name=".update_prices" />
         <activity android:name=".payment_status" />
         <activity android:name=".viewOrder" />

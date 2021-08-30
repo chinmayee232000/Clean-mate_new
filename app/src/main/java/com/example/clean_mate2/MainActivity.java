@@ -100,6 +100,8 @@ String Uid; //Uid is phone number
                 startActivity(toRegister);
             }
         });
+
+
     }
 }
 

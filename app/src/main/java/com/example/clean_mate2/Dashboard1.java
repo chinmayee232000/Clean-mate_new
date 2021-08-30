@@ -24,6 +24,7 @@ import java.sql.Array;
 public class Dashboard1 extends AppCompatActivity {
   private static final String TAG="Dashboard1";
   int[] quant=new int[5];
+  int ct1,ct2,ct3,ct4,ct5;
   int totalPayment=0,totalItems=0;
     TextView addImage1,addImage2,addImage3,addImage4,addImage5;
     CheckBox c1,c2,c3,c4,c5;
@@ -50,6 +51,7 @@ public class Dashboard1 extends AppCompatActivity {
         addImage4=(TextView)findViewById(R.id.textView14);
         addImage5=(TextView)findViewById(R.id.textView16);
         Uid=getIntent().getStringExtra("Uid");
+        int ic=0;
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.selection_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,6 +62,7 @@ public class Dashboard1 extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     // An item was selected. You can retrieve the selected item using
                     quant[0] = Integer.parseInt(parent.getItemAtPosition(position).toString());
+                    ct1=quant[0];
                 }
 
                 @Override
@@ -74,6 +77,7 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     quant[1] = Integer.parseInt(parent.getItemAtPosition(position).toString());
+                    ct2=quant[1];
                 }
 
                 @Override
@@ -88,6 +92,7 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     quant[2] = Integer.parseInt(parent.getItemAtPosition(position).toString());
+                    ct3=quant[2];
                 }
 
                 @Override
@@ -102,6 +107,7 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     quant[3] = Integer.parseInt(parent.getItemAtPosition(position).toString());
+                    ct4=quant[3];
                 }
 
                 @Override
@@ -115,6 +121,7 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     quant[4] = Integer.parseInt(parent.getItemAtPosition(position).toString());
+                    ct5=quant[4];
                 }
 
                 @Override
@@ -131,11 +138,21 @@ public class Dashboard1 extends AppCompatActivity {
 
             addImage1.setOnClickListener(new View.OnClickListener() {
                 @Override
+
                 public void onClick(View v) {
                     if(c1.isChecked()) {
-                        Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
-                        toAddImages.putExtra("Uid", Uid);
-                        startActivity(toAddImages);
+                        //int dc=quant[0];
+                        if(ct1!=0) {
+                            Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
+                            toAddImages.putExtra("Uid", Uid);
+                            ct1--;
+                            Log.d(TAG, "onClick: dc"+ct1);
+                            startActivity(toAddImages);
+                        }
+                        else
+                        {
+                            Toast.makeText(Dashboard1.this,"Too few item selected from dropdown",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });
@@ -145,9 +162,17 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(c2.isChecked()) {
-                        Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
-                        toAddImages.putExtra("Uid", Uid);
-                        startActivity(toAddImages);
+
+                        if(ct2>0) {
+                            Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
+                            toAddImages.putExtra("Uid", Uid);
+                            ct2--;
+                            startActivity(toAddImages);
+                        }
+                        else
+                        {
+                            Toast.makeText(Dashboard1.this,"Too few item selected from dropdown",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });
@@ -158,9 +183,17 @@ public class Dashboard1 extends AppCompatActivity {
 
                 public void onClick(View v) {
                     if(c3.isChecked()) {
-                        Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
-                        toAddImages.putExtra("Uid", Uid);
-                        startActivity(toAddImages);
+
+                        if(ct3>0) {
+                            Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
+                            toAddImages.putExtra("Uid", Uid);
+                            ct3--;
+                            startActivity(toAddImages);
+                        }
+                        else
+                        {
+                            Toast.makeText(Dashboard1.this,"Too few item selected from dropdown",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });
@@ -170,9 +203,17 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(c4.isChecked()) {
-                        Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
-                        toAddImages.putExtra("Uid", Uid);
-                        startActivity(toAddImages);
+
+                        if(ct4>0) {
+                            Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
+                            toAddImages.putExtra("Uid", Uid);
+                            ct4--;
+                            startActivity(toAddImages);
+                        }
+                        else
+                        {
+                            Toast.makeText(Dashboard1.this,"Too few item selected from dropdown",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });
@@ -182,9 +223,17 @@ public class Dashboard1 extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(c5.isChecked()) {
-                        Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
-                        toAddImages.putExtra("Uid", Uid);
-                        startActivity(toAddImages);
+
+                        if(ct5>0) {
+                            Intent toAddImages = new Intent(Dashboard1.this, AddImages.class);
+                            toAddImages.putExtra("Uid", Uid);
+                            ct5--;
+                            startActivity(toAddImages);
+                        }
+                        else
+                        {
+                            Toast.makeText(Dashboard1.this,"Too few item selected from dropdown",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });
